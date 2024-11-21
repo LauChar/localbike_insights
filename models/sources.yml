@@ -1,5 +1,6 @@
 version: 2
 
+sources:
   - name: localbike_dataset
     schema: localbike_dataset
     tables:
