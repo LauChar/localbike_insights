@@ -1,5 +1,6 @@
 WITH order_items_grouped_by_product_id AS (
   SELECT
+    CONCAT(store_id, '_', product_id) as store_product_id,
     store_id,
     product_id,
     sum(product_quantity) as total_products_sold,
@@ -9,6 +10,7 @@ WITH order_items_grouped_by_product_id AS (
   )
 
 SELECT 
+    oip.store_product_id,
     oip.store_id,
     s.store_name,
     oip.product_id,
