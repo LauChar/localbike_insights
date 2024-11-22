@@ -10,7 +10,9 @@ WITH order_items_grouped_by_order AS (
 
 SELECT 
   oi.order_id,
+  o.order_date,
   o.customer_id,
+  c.customer_state,
   oi.total_order_amount,
   oi.total_items,
   oi.total_distinct_items,
@@ -19,4 +21,6 @@ SELECT
 FROM
   order_items_grouped_by_order oi
 LEFT JOIN {{ ref('stg_localbike_dataset__orders')}} o
-ON oi.order_id = o.order_id
+    ON oi.order_id = o.order_id
+LEFT JOIN {{ ref('stg_localbike_dataset__customers') }} c
+    ON o.customer_id = c.customer_id
