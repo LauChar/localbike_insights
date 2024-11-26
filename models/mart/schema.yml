@@ -1,0 +1,28 @@
+version: 2
+
+models:
+
+  - name: mart_localbike_dataset__order_daily_report
+    description: "This model contains aggregated information about stocks in each store."
+    columns:
+      - name: report_date
+        description: "Primary key, unique identifier for each day of order report."
+        tests:
+            - unique
+            - not_null
+      - name: total_orders
+        description: "Total number of orders, obtained by counting disting order IDs."
+      - name : average_total_distinct_items
+        description: "Average number of distinct items by order, obtained by calculating the average of total_distinct_items."
+      - name : average_total_order_amount
+        description: "Average amount of orders, obtained by calculating the average of total_order_amount."
+
+  - name: mart_localbike_dataset__stocks_compared_with_sales
+    description: "For each product in each store, this model contains the stock quantity and the number of items sold over the period."
+    columns:
+      - name: stock_store_product_id
+        description: "Primary key, unique identifier for each product in each store."
+        tests:
+            - unique
+            - not_null
+ 
