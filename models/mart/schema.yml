@@ -1,0 +1,13 @@
+version: 2
+
+models:
+
+  - name: mart_localbike_dataset__stocks_compared_with_sales
+    description: "For each product in each store, this model contains the stock quantity and the number of items sold over the period."
+    columns:
+      - name: stock_store_product_id
+        description: "Primary key, unique identifier for each product in each store."
+        tests:
+            - unique
+            - not_null
+ 
